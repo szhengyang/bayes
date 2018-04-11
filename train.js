@@ -129,20 +129,26 @@ function calculateProbability(word,language,training){
     // e.g. the probability that "bonjour" shows up in a French document
     // ----------------------------------------------------------
     //      YOUR CODE
-    // ----------------------------------------------------------             
+    // ----------------------------------------------------------      
+    
+    var wordProbability = wordCountInLanguage(word, language)/training.docCounts[language];
 
 
     // probability that word is not in language
     // ----------------------------------------------------------
     //      YOUR CODE
-    // ----------------------------------------------------------             
+    // ----------------------------------------------------------         
+    
+    var wordNotProbability = wordNotInLanguageCount(word, language)/training.docNotInCounts[language];
 
     // probability that document is in a "language" given that "word" is in it
     // e.g. probability that document is french given that "bonjour" is in it
     // http://en.wikipedia.org/w/index.php?title=Naive_Bayes_spam_filtering#Computing_the_probability_that_a_message_containing_a_given_word_is_spam
     // ----------------------------------------------------------
     //      YOUR CODE
-    // ----------------------------------------------------------                
+    // ----------------------------------------------------------           
+    
+    var probability = wordProbability/(wordProbability + wordNotProbability);
 
 
     // avoid 0 and 1 for later log calculations

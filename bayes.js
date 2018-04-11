@@ -33,7 +33,9 @@ function run(text){
             // http://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering#Other_expression_of_the_formula_for_combining_individual_probabilities
             // ----------------------------------------------------------
             //      YOUR CODE
-            // ----------------------------------------------------------            
+            // ----------------------------------------------------------       
+            
+            logSum += (Math.log(1-probability)) - Math.log(probability);
 
             // debugging feedback
             console.log(language + "icity of " + word + ": " + probability + ", logSum: " + logSum);
@@ -43,6 +45,8 @@ function run(text){
         // ----------------------------------------------------------
         //      YOUR CODE
         // ---------------------------------------------------------- 
+
+        scores[language] = 1/(1+Math.exp(logSum));
 
     }
     displayPretty(scores);    
